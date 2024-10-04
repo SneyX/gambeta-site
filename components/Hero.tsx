@@ -8,15 +8,15 @@ const Hero = () => {
 
       <div className="relative z-20 flex flex-1 flex-col xl:w-1/2">
         <Image 
-          src="/camp.svg"
+          src="/soccer-icon.png"
           alt="camp"
           width={50}
           height={50}
-          className="absolute left-[-5px] top-[-30px] w-10 lg:w-[50px]"
+          className="absolute left-[-5px] top-[-30px] w-10 lg:w-[70px]"
         />
-        <h1 className="bold-52 lg:bold-88">Putuk Truno Camp Area</h1>
+        <h1 className="bold-52 lg:bold-88">Gambeta</h1>
         <p className="regular-16 mt-6 text-gray-30 xl:max-w-[520px]">
-          We want to be on each of your journeys seeking the satisfaction of seeing the incorruptible beauty of nature. We can help you on an adventure around the world in just one app
+          Gambeta es la aplicación perfecta para reservar canchas de deportes. Descubre y reserva canchas de fútbol, baloncesto, tenis y más en tu ciudad. ¡Reserva tu espacio para jugar hoy mismo!
         </p>
 
         <div className="my-11 flex flex-wrap gap-5">
@@ -34,19 +34,19 @@ const Hero = () => {
 
           <p className="bold-16 lg:bold-20 text-blue-70">
             198k
-            <span className="regular-16 lg:regular-20 ml-1">Excellent Reviews</span>
+            <span className="regular-16 lg:regular-20 ml-1">Reseñas Excelentes</span>
           </p>
         </div>
 
         <div className="flex flex-col w-full gap-3 sm:flex-row">
           <Button 
             type="button" 
-            title="Download App" 
+            title="Descargar App" 
             variant="btn_green" 
           />
           <Button 
             type="button" 
-            title="How we work?" 
+            title="¿Cómo Funciona?" 
             icon="/play.svg"
             variant="btn_white_text" 
           />
@@ -58,7 +58,7 @@ const Hero = () => {
 
            <div className="flex flex-col">
             <div className="flexBetween">
-              <p className="regular-16 text-gray-20">Location</p>
+              <p className="regular-16 text-gray-20">Ubicación</p>
               <Image src="/close.svg" alt="close" width={24} height={24} />
             </div>
             <p className="bold-20 text-white">Aguas Calientes</p>
@@ -66,11 +66,11 @@ const Hero = () => {
 
           <div className="flexBetween">
             <div className="flex flex-col">
-              <p className="regular-16 block text-gray-20">Distance</p>
+              <p className="regular-16 block text-gray-20">Distancia</p>
               <p className="bold-20 text-white">173.28 mi</p>
             </div>
             <div className="flex flex-col">
-              <p className="regular-16 block text-gray-20">Elevation</p>
+              <p className="regular-16 block text-gray-20">Elevación</p>
               <p className="bold-20 text-white">2.040 km</p>
             </div>
           </div>

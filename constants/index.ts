@@ -1,10 +1,10 @@
 // NAVIGATION
 export const NAV_LINKS = [
-  { href: '/', key: 'home', label: 'Home' },
-  { href: '/', key: 'how_hilink_work', label: 'How Hilink Work?' },
-  { href: '/', key: 'services', label: 'Services' },
-  { href: '/', key: 'pricing ', label: 'Pricing ' },
-  { href: '/', key: 'contact_us', label: 'Contact Us' },
+  { href: '/', key: 'home', label: 'Inicio' },
+  { href: '/', key: 'how_hilink_work', label: 'Cómo funciona Gambeta?' },
+  { href: '/', key: 'services', label: 'Servicios' },
+  { href: '/', key: 'pricing ', label: 'Precios' },
+  { href: '/', key: 'contact_us', label: 'Contactanos' },
 ];
 
 // CAMP SECTION
@@ -18,59 +18,59 @@ export const PEOPLE_URL = [
 // FEATURES SECTION
 export const FEATURES = [
   {
-    title: 'Real maps can be offline',
+    title: 'Reserva de canchas',
     icon: '/map.svg',
     variant: 'green',
     description:
-      'We provide a solution for you to be able to use our application when climbing, yes offline maps you can use at any time there is no signal at the location',
+      'Gambeta te permite reservar canchas de fútbol, baloncesto, tenis y más. ¡Reserva tu espacio para jugar hoy mismo!',
   },
   {
-    title: 'Set an adventure schedule',
+    title: 'Programa tu aventura',
     icon: '/calendar.svg',
     variant: 'green',
     description:
-      "Schedule an adventure with friends. On holidays, there are many interesting offers from Hilink. That way, there's no more discussion",
+      "Programa una aventura con amigos. En días festivos, hay muchas ofertas interesantes de Gambeta. ¡Así que no hay más discusión!",
   },
   {
-    title: 'Technology using augment reality',
-    icon: '/tech.svg',
+    title: 'Reserva de canchas de fútbol',
+    icon: '/map.svg',
     variant: 'green',
     description:
-      'Technology uses augmented reality as a guide to your hiking trail in the forest to the top of the mountain. Already supported by the latest technology without an internet connection',
+      'Gambeta te permite reservar canchas de fútbol en tu ciudad. ¡Reserva tu espacio para jugar hoy mismo!',
   },
   {
-    title: 'Many new locations every month',
-    icon: '/location.svg',
+    title: 'Programa tu aventura',
+    icon: '/calendar.svg',
     variant: 'orange',
     description:
-      'Lots of new locations every month, because we have a worldwide community of climbers who share their best experiences with climbing',
+      "Programa una aventura con amigos. En días festivos, hay muchas ofertas interesantes de Gambeta. ¡Así que no hay más discusión!",
   },
 ];
 
 // FOOTER SECTION
 export const FOOTER_LINKS = [
   {
-    title: 'Learn More',
+    title: 'Aprende Más',
     links: [
-      'About Hilink',
-      'Press Releases',
-      'Environment',
-      'Jobs',
-      'Privacy Policy',
-      'Contact Us',
+      'Acerca de Gambeta',
+      'Comunicados de Prensa',
+      'Medio Ambiente',
+      'Empleos',
+      'Política de Privacidad',
+      'Contactanos',
     ],
   },
   {
-    title: 'Our Community',
-    links: ['Climbing xixixi', 'Hiking hilink', 'Hilink kinthill'],
+    title: 'Nuestra Comunidad',
+    links: ['Escalada xixixi', 'Senderismo Gambeta', 'Gambeta kinthill'],
   },
 ];
 
 export const FOOTER_CONTACT_INFO = {
-  title: 'Contact Us',
+  title: 'Contactanos',
   links: [
-    { label: 'Admin Officer', value: '123-456-7890' },
-    { label: 'Email Officer', value: 'hilink@akinthil.com' },
+    { label: 'Oficial de Administración', value: '123-456-7890' },
+    { label: 'Oficial de Email', value: 'gambeta@akinthil.com' },
   ],
 };
 
