@@ -9,12 +9,12 @@ const Footer = () => {
       <div className="padding-container max-container flex w-full flex-col gap-14">
         <div className="flex flex-col items-start justify-center gap-[10%] md:flex-row">
           <Link href="/" className="mb-10">
-            <Image src="hilink-logo.svg" alt="logo" width={74} height={29}/>
+            <p className="font-bold text-xl text-[#19bcc8]">Gambeta</p>
           </Link>
 
           <div className='flex flex-wrap gap-10 sm:justify-between md:flex-1'>
-            {FOOTER_LINKS.map((columns) => (
-              <FooterColumn title={columns.title}>
+            {FOOTER_LINKS.map((columns, idx) => (
+              <FooterColumn title={columns.title} key={idx}>
                 <ul className="regular-14 flex flex-col gap-4 text-gray-30">
                   {columns.links.map((link) => (
                     <Link href="/" key={link}>
@@ -59,7 +59,7 @@ const Footer = () => {
         </div>
 
         <div className="border bg-gray-20" />
-        <p className="regular-14 w-full text-center text-gray-30">2023 Hilink | All rights reserved</p>
+        <p className="regular-14 w-full text-center text-gray-30">Gambeta | Todos los derechos reservados</p>
       </div>
     </footer>
   )

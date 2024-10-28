@@ -30,8 +30,8 @@ module.exports = {
         },
       },
       backgroundImage: {
-        'bg-img-1': "url('/img-1.png')",
-        'bg-img-2': "url('/img-2.png')",
+        'bg-img-1': "url('https://czouodndnftmiimmyckn.supabase.co/storage/v1/object/sign/Gambeta/prediorosada.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJHYW1iZXRhL3ByZWRpb3Jvc2FkYS5wbmciLCJpYXQiOjE3Mjc0NjE1NDMsImV4cCI6NDg4MTA2MTU0M30.IcSGHsaehEjb9QEFimFOkC23glxVm88kp6Jwxwq_GQY&t=2024-09-27T18%3A25%3A43.924Z')",
+        'bg-img-2': "url('https://m.campananoticias.com/media/images/20210304045601.jpg?vp=412x732')",
         'feature-bg': "url('/feature-bg.png')",
         pattern: "url('/pattern.png')",
         'pattern-2': "url('/pattern-bg.png')",

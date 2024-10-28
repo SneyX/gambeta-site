@@ -5,8 +5,8 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
-  title: 'Travel',
-  description: 'Travel UI/UX App for Camping',
+  title: 'Gambeta',
+  description: 'Gambeta - Tu app de reservas de canchas para todos los deportes.',
 }
 
 export default function RootLayout({
