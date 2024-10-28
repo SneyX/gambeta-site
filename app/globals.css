@@ -15,6 +15,11 @@ body {
 }
 
 @layer utilities {
+
+  .map-container {
+    @apply h-[100%] w-[90%] rounded-3xl m-auto
+  }
+
   .btn_white { 
     @apply  border-white bg-white px-8 py-3 text-[#19bcc8]
   }
