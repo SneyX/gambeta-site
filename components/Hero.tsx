@@ -23,13 +23,7 @@ const Hero = () => {
           <Button 
             type="button" 
             title="Descargar App" 
-            variant="btn_green" 
-          />
-          <Button 
-            type="button" 
-            title="Como funciona?" 
-            icon="/play.svg"
-            variant="btn_white_text" 
+            variant="btn_green"
           />
         </div>
       </div>

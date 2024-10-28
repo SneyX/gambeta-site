@@ -1,8 +1,9 @@
 // NAVIGATION
 export const NAV_LINKS = [
   { href: '/', key: 'home', label: 'Inicio' },
-  { href: '/', key: 'how_hilink_work', label: 'Cómo funciona Gambeta?' },
-  { href: '/', key: 'services', label: 'Servicios' },
+  { href: '#camp', key: 'how_hilink_work', label: 'Cómo funciona Gambeta?' },
+  { href: '#servicios', key: 'services', label: 'Servicios' },
+  { href: '#download', key: 'download', label: 'Descargar' },
 ];
 
 // FEATURES SECTION
@@ -60,9 +61,7 @@ export const FOOTER_CONTACT_INFO = {
 export const SOCIALS = {
   title: 'Redes',
   links: [
-    '/facebook.svg',
     '/instagram.svg',
-    '/twitter.svg',
     '/youtube.svg',
   ],
 };
