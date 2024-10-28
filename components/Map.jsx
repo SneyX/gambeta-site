@@ -5,6 +5,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { createClient } from "@supabase/supabase-js";
 import { MapPin } from "lucide-react";
 import { fetchItems } from "@/actions";
+import { motion } from 'framer-motion';
 
 const Map = ({
     radius,
@@ -62,76 +63,109 @@ const Map = ({
     }, [])
 
   return (
-    <section className="2xl:max-container relative flex flex-col py-10 lg:mb-10 lg:py-20 xl:mb-20">
-        <h2 className="bold-40 lg:bold-64 text-center">Encuentra</h2>
-        <p className="regular-16 bg-white/80 text-gray-30 lg:bg-none mb-10 text-center">
+    <motion.section
+      initial={{ opacity: 0, y: 100 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, delay: 0.2 }}
+      className="2xl:max-container relative flex flex-col py-10 lg:mb-10 lg:py-20 xl:mb-20"
+    >
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.5 }}
+          className="bold-40 lg:bold-64 text-center"
+        >
+        Encuentra
+        </motion.h2>
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.75 }}
+          className="regular-16 bg-white/80 text-gray-30 lg:bg-none mb-10 text-center"
+        >
         Utiliza nuestra herramienta de búsqueda para encontrar los establecimientos más cercanos a tu ubicación actual.
-        </p>
+        </motion.p>
         <div
             className="w-full h-[500px]"
         >
             {
                 !isLoaded ? (
-                    <h1>Loading...</h1>
-                ) : (
-                    <GoogleMap
-                        mapContainerClassName="map-container"
-                        center={center}
-                        zoom={12}
-                        onLoad={(map) => setMap(map)}
+                    <motion.h1
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.5, delay: 0.5 }}
                     >
-                        <StandaloneSearchBox
-                            onLoad={(ref) => (inputRef.current = ref)}
-                            onPlacesChanged={handlePlaceChanged}
+                    Cargando...
+                    </motion.h1>
+                ) : (
+                    <motion.div
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.5, delay: 0.5 }}
+                      className="w-full h-full"
+                    >
+                        <GoogleMap
+                            mapContainerClassName="map-container"
+                            center={center}
+                            zoom={12}
+                            onLoad={(map) => setMap(map)}
                         >
-                            <div
-                                className="relative ml-48 mt-[10px] w-[500px]"
+                            <StandaloneSearchBox
+                                onLoad={(ref) => (inputRef.current = ref)}
+                                onPlacesChanged={handlePlaceChanged}
                             >
-                                <input 
-                                    type="text" 
-                                    className={`form-control text-black rounded-lg bg-white ${style} pl-10`}
-                                    value={address}
-                                    placeholder="Buscar ubicacion"
-                                    onChange={(e) => setAddress(e.target.value)}
-                                />
-                                <MapPin className="absolute left-3 top-1/2 transform -translate-y-1/2" />
-                            </div>
-                        </StandaloneSearchBox>
-
-                        <button
-                            className="z-50 flex justify-center items-center w-12 h-12 transition durtion-300 rounded-lg shadow-sm bg-white absolute left-[10px] bottom-[30px]"
-                            onClick={() => map.panTo({ lat: latitude, lng: longitude })}
-                        >
-                            <span className="text-xs text-black">Centrar</span>
-                        </button>
-
-                        {
-                            establishments?.map((establishment, index) => {
-                                return (
-                                    <MarkerF
-                                        draggable
-                                        animation={google.maps.Animation.DROP}
-                                        onDragEnd={changeCoordinate}
-                                        position={{ lat: parseFloat(establishment.latitude), lng: parseFloat(establishment.longitude) }}
+                                <div
+                                    className="relative ml-48 mt-[10px] w-[500px]"
+                                >
+                                    <input 
+                                        type="text" 
+                                        className={`form-control text-black rounded-lg bg-white ${style} pl-10`}
+                                        value={address}
+                                        placeholder="Buscar ubicacion"
+                                        onChange={(e) => setAddress(e.target.value)}
                                     />
-                                )
-                            })
-                        }
-                        
-                        <Circle
-                            options={{
-                                fillColor: "#FF0000",
-                                strokeOpacity: 0.8,
-                                strokeColor: "#FF0000",
-                                strokeWeight: 2,
-                                fillOpacity: 0.35,
-                            }}
-                        />
-                    </GoogleMap>
+                                    <MapPin className="absolute left-3 top-1/2 transform -translate-y-1/2" />
+                                </div>
+                            </StandaloneSearchBox>
+
+                            <motion.button
+                              initial={{ opacity: 0, x: -100 }}
+                              whileInView={{ opacity: 1, x: 0 }}
+                              transition={{ duration: 0.5, delay: 0.2 }}
+                              className="z-50 flex justify-center items-center w-12 h-12 transition durtion-300 rounded-lg shadow-sm bg-white absolute left-[10px] bottom-[30px]"
+                              onClick={() => map.panTo({ lat: latitude, lng: longitude })}
+                            >
+                                <span className="text-xs text-black">Centrar</span>
+                            </motion.button>
+
+                            {
+                                establishments?.map((establishment, index) => {
+                                    return (
+                                        <MarkerF
+                                            draggable
+                                            animation={google.maps.Animation.DROP}
+                                            onDragEnd={changeCoordinate}
+                                            position={{ lat: parseFloat(establishment.latitude), lng: parseFloat(establishment.longitude) }}
+                                        />
+                                    )
+                                })
+                            }
+                            
+                            <Circle
+                                options={{
+                                    fillColor: "#FF0000",
+                                    strokeOpacity: 0.8,
+                                    strokeColor: "#FF0000",
+                                    strokeWeight: 2,
+                                    fillOpacity: 0.35,
+                                }}
+                            />
+                        </GoogleMap>
+                    </motion.div>
                 )
             }
         </div>
-    </section>
+    </motion.section>
   )
 }
 
