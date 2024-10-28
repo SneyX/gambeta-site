@@ -5,13 +5,6 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { createClient } from "@supabase/supabase-js";
 import { MapPin } from "lucide-react";
 
-const supabase = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL, process.env.NEXT_PUBLIC_SUPABASE_SERVICE_ROLE_KEY, {
-    auth: {
-      autoRefreshToken: false,
-      persistSession: false
-    }
-  })
-
 const Map = ({
     radius,
     setLatitude,
@@ -22,6 +15,13 @@ const Map = ({
     longitude,
     setLongitude,
 }) => {
+
+    const supabase = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL, process.env.NEXT_PUBLIC_SUPABASE_SERVICE_ROLE_KEY, {
+        auth: {
+          autoRefreshToken: false,
+          persistSession: false
+        }
+      })
 
     const [map, setMap] = useState(null)
     const [establishments, setEstablishments] = useState(null)
