@@ -1,6 +1,6 @@
 'use client';
 
-import { GoogleMap, MarkerF, useLoadScript, Circle, StandaloneSearchBox } from "@react-google-maps/api";
+import { GoogleMap, MarkerF, useLoadScript, Circle, StandaloneSearchBox, InfoWindow } from "@react-google-maps/api";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { createClient } from "@supabase/supabase-js";
 import { MapPin } from "lucide-react";
@@ -20,6 +20,7 @@ const Map = ({
 
     const [map, setMap] = useState(null)
     const [establishments, setEstablishments] = useState(null)
+    const [selectedEstablishment, setSelectedEstablishment] = useState(null)
 
     const { isLoaded } = useLoadScript({
         googleMapsApiKey: process.env.NEXT_PUBLIC_MAPS_API_KEY,
@@ -50,6 +51,10 @@ const Map = ({
             setLatitude(place.geometry.location.lat())
             setLongitude(place.geometry.location.lng())
         }
+    }
+
+    const handleMarkerClick = (establishment) => {
+        setSelectedEstablishment(establishment)
     }
 
     useEffect(() => {
@@ -141,16 +146,31 @@ const Map = ({
                             {
                                 establishments?.map((establishment, index) => {
                                     return (
-                                        <MarkerF
-                                            draggable
-                                            animation={google.maps.Animation.DROP}
-                                            onDragEnd={changeCoordinate}
-                                            position={{ lat: parseFloat(establishment.latitude), lng: parseFloat(establishment.longitude) }}
-                                        />
+                                        <>
+                                            <MarkerF
+                                                draggable
+                                                animation={google.maps.Animation.DROP}
+                                                onDragEnd={changeCoordinate}
+                                                position={{ lat: parseFloat(establishment.latitude), lng: parseFloat(establishment.longitude) }}
+                                                onClick={() => handleMarkerClick(establishment)}
+                                            />
+                                            {selectedEstablishment && selectedEstablishment.id === establishment.id && (
+                                                <InfoWindow
+                                                    position={{ lat: parseFloat(establishment.latitude) + 0.0025, lng: parseFloat(establishment.longitude) }}
+                                                    onCloseClick={() => setSelectedEstablishment(null)}
+                                                >
+                                                    <div className="space-y-2 p-0">
+                                                        <h2 className="font-semibold text-center text-base">{establishment.name}</h2>
+                                                        <p className="text-center">{establishment.address}</p>
+                                                    </div>
+                                                </InfoWindow>
+                                            )}
+                                        </>
                                     )
                                 })
                             }
                             
+
                             <Circle
                                 options={{
                                     fillColor: "#FF0000",

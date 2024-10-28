@@ -15,7 +15,7 @@ export const fetchItems = async () => {
       let { data, error } = await supabase
       .from('establishments')
       .select(`
-        name, latitude, longitude
+        name, latitude, longitude, address
       `)
       //.ilike('address', `%${location.address.city}%`)
       
