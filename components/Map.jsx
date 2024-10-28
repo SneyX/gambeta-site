@@ -4,6 +4,7 @@ import { GoogleMap, MarkerF, useLoadScript, Circle, StandaloneSearchBox } from "
 import { useEffect, useMemo, useRef, useState } from "react";
 import { createClient } from "@supabase/supabase-js";
 import { MapPin } from "lucide-react";
+import { fetchItems } from "@/actions";
 
 const Map = ({
     radius,
@@ -15,13 +16,6 @@ const Map = ({
     longitude,
     setLongitude,
 }) => {
-
-    const supabase = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL, process.env.NEXT_PUBLIC_SUPABASE_SERVICE_ROLE_KEY, {
-        auth: {
-          autoRefreshToken: false,
-          persistSession: false
-        }
-      })
 
     const [map, setMap] = useState(null)
     const [establishments, setEstablishments] = useState(null)
@@ -57,27 +51,14 @@ const Map = ({
         }
     }
 
-    const fetchItems = async () => {
-        try {
-          console.log('fetching')
-          let { data, error } = await supabase
-          .from('establishments')
-          .select(`
-            name, latitude, longitude
-          `)
-          //.ilike('address', `%${location.address.city}%`)
-          
-          if (error) throw error;
-
-          setEstablishments(data)
-  
-        } catch (error) {
-          console.error('Error fetching items:', error)
-        }
-      }
-
     useEffect(() => {
-        fetchItems()
+        const getEstablishments = async () => {
+            const data = await fetchItems()
+
+            setEstablishments(data)
+        }
+
+        getEstablishments()
     }, [])
 
   return (
