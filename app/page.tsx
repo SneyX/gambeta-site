@@ -1,12 +1,13 @@
 "use client"
 
+import { handleAuthorizationCode } from "@/actions";
 import Camp from "@/components/Camp";
 import Features from "@/components/Features";
 import GetApp from "@/components/GetApp";
 import Guide from "@/components/Guide";
 import Hero from "@/components/Hero";
 import Map from "@/components/Map";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function Home() {
   
@@ -22,6 +23,27 @@ export default function Home() {
   const [longitude, setLongitude] = useState(-58.956354125525024)
   const [address, setAddress] = useState("")
   
+  useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const code = urlParams.get('code');
+    const state = urlParams.get('state');
+    if (code && state) {
+      (async () => {
+        try {
+          const response = await handleAuthorizationCode(code, state);
+          if (response.success) {
+            alert(response.message);
+          } else {
+            alert(response.message);
+          }
+        } catch (error) {
+          console.error(error);
+          alert('An unexpected error occurred. Please try again.');
+        }
+      })();
+    }
+  }, []);
+
   return (
     <>
       <Hero />
