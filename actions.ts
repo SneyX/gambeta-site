@@ -70,7 +70,7 @@ export const fetchItems = async () => {
       if (establishmentError) throw establishmentError;
 
       // If the establishment does not have MP credentials, insert them
-      if (establishmentData && !establishmentData.mp_access_token) {
+      if (establishmentData) {
         await supabase
           .from('establishments')
           .update({
