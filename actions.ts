@@ -3,7 +3,7 @@
 import { createClient } from "@supabase/supabase-js";
 import * as crypto from 'crypto';
 
-const supabase = createClient(process.env.SUPABASE_URL as string, process.env.SUPABASE_SERVICE_ROLE_KEY as string, {
+const supabase = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL as string, process.env.SUPABASE_SERVICE_ROLE_KEY as string, {
     auth: {
       autoRefreshToken: false,
       persistSession: false
@@ -12,7 +12,6 @@ const supabase = createClient(process.env.SUPABASE_URL as string, process.env.SU
 
 export const fetchItems = async () => {
     try {
-      console.log('fetching')
       let { data, error } = await supabase
       .from('establishments')
       .select(`
