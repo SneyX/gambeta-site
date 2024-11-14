@@ -78,7 +78,7 @@ export default function Login() {
 
             <div className="flex justify-center mt-2">
               <motion.div
-                className="w-full max-w-[200px]"
+                className="w-full max-w-[200px] flex justify-center"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
               >
