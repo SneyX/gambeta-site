@@ -56,6 +56,14 @@ const Navbar = () => {
     return () => subscription.unsubscribe()
   }, [])
 
+  const handleLogout = async () => {
+    const { error } = await supabase.auth.signOut()
+    if (!error) {
+      setUser(null)
+      setUsername(null)
+    }
+  }
+
   return (
     <nav className="flexBetween max-container padding-container relative z-30 py-5">
       <Link href="/">
@@ -89,14 +97,13 @@ const Navbar = () => {
         whileTap={{ scale: 0.9, transition: { duration: 0.2, delay: 0 } }}
       >
         {user ? (
-          <Link href="/login">
-            <Button 
-              type="button"
-              title="Cerrar Sesion"
-              icon="/user.svg"
-              variant="btn_dark_green"
-            />
-          </Link>
+          <Button 
+            type="button"
+            title="Cerrar Sesion"
+            icon="/user.svg"
+            variant="btn_dark_green"
+            onClick={handleLogout}
+          />
         ) : (
           <Link href="/login">
             <Button 

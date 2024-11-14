@@ -86,6 +86,7 @@ export default function Login() {
                   type="submit"
                   title="Iniciar Sesión"
                   variant="btn_dark_green"
+                  onClick={() => ''}
                 />
               </motion.div>
             </div>
