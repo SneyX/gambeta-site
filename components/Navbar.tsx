@@ -5,8 +5,57 @@ import Image from "next/image"
 import Link from "next/link"
 import Button from "./Button"
 import { motion } from 'framer-motion'
+import { createClient } from '@/utils/supabase/client'
+import { useEffect, useState } from 'react'
+import { User } from '@supabase/supabase-js'
 
 const Navbar = () => {
+  const [user, setUser] = useState<User | null>(null)
+  const [username, setUsername] = useState<string | null>(null)
+  const supabase = createClient()
+
+  useEffect(() => {
+    const getUser = async () => {
+      const { data: { user } } = await supabase.auth.getUser()
+      setUser(user)
+
+      if (user) {
+        const { data: userData, error } = await supabase
+          .from('users')
+          .select('name')
+          .eq('id', user.id)
+          .single()
+
+        if (!error && userData) {
+          setUsername(userData.name)
+        }
+      }
+    }
+
+    getUser()
+
+    const { data: { subscription } } = supabase.auth.onAuthStateChange(async (_event, session) => {
+      const currentUser = session?.user ?? null
+      setUser(currentUser)
+
+      if (currentUser) {
+        const { data: userData, error } = await supabase
+          .from('users')
+          .select('username')
+          .eq('id', currentUser.id)
+          .single()
+
+        if (!error && userData) {
+          setUsername(userData.username)
+        }
+      } else {
+        setUsername(null)
+      }
+    })
+
+    return () => subscription.unsubscribe()
+  }, [])
+
   return (
     <nav className="flexBetween max-container padding-container relative z-30 py-5">
       <Link href="/">
@@ -39,12 +88,25 @@ const Navbar = () => {
         whileHover={{ scale: 1.1, transition: { duration: 0.3, delay: 0 } }}              
         whileTap={{ scale: 0.9, transition: { duration: 0.2, delay: 0 } }}
       >
-        <Button 
-          type="button"
-          title="Iniciar Sesion"
-          icon="/user.svg"
-          variant="btn_dark_green"
-        />
+        {user ? (
+          <Link href="/login">
+            <Button 
+              type="button"
+              title="Cerrar Sesion"
+              icon="/user.svg"
+              variant="btn_dark_green"
+            />
+          </Link>
+        ) : (
+          <Link href="/login">
+            <Button 
+              type="button"
+              title="Iniciar Sesion"
+              icon="/user.svg"
+              variant="btn_dark_green"
+            />
+          </Link>
+        )}
       </motion.div>
 
       <Image 

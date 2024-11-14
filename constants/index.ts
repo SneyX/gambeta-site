@@ -54,7 +54,7 @@ export const FOOTER_LINKS = [
 export const FOOTER_CONTACT_INFO = {
   title: 'Contactanos',
   links: [
-    { label: 'Correo', value: 'gambeta-reservas@gmail.com' },
+    { label: 'Correo', value: 'gambeta.reservas@gmail.com' },
   ],
 };
 

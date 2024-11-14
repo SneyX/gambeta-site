@@ -1,8 +1,6 @@
 import type { Metadata } from 'next';
-
 import './globals.css'
-import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
+import LayoutWrapper from '@/components/LayoutWrapper';
 
 export const metadata: Metadata = {
   title: 'Gambeta',
@@ -17,11 +15,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <Navbar />
-        <main className="relative overflow-hidden">
+        <LayoutWrapper>
           {children}
-        </main>
-        <Footer />
+        </LayoutWrapper>
       </body>
     </html>
   )
